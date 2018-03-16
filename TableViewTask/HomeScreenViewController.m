@@ -11,8 +11,7 @@
 #import "UserDetailsViewController.h"
 
 @interface HomeScreenViewController (){
-    NSMutableString *socialAccountName;
-    NSMutableArray *socialAccountNamesArray;
+    NSMutableArray *socialAccountNamesArray; //This is the array that consists of socialAccountName(of size 6)
 }
 @end
 int imageId=1;
@@ -23,7 +22,7 @@ int imageId=1;
     // Do any additional setup after loading the view.
     nameArray = [[NSMutableArray alloc]init];
     imageArray = [[NSMutableArray alloc]init];
-    socialAccountArray =[[NSMutableArray alloc]init];
+    socialAccountArray =[[NSMutableArray alloc]init]; //This array is going to iterate the socialAccountNamesArray repeatedly and stores the values for 300 records
     createdAtArray=[[NSMutableArray alloc]init];
     [self arraySetup];
 }
@@ -38,8 +37,7 @@ int imageId=1;
         if(imageId == 6)
             imageId=1;
         [imageArray addObject:[NSString stringWithFormat:@"userSocialIcon%d",imageId]];
-        socialAccountName = socialAccountNamesArray[imageId-1];
-        [socialAccountArray addObject:socialAccountName];
+        [socialAccountArray addObject:socialAccountNamesArray[imageId-1]];
         NSLog(@"%@",socialAccountArray[i]);
         imageId++;
     }
@@ -79,7 +77,6 @@ int imageId=1;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UserDetailsViewController * userDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"userDetailsViewController"];
-    //    userDetailsViewController.userImageView = imageArray[indexPath.row];
     userDetailsViewController.userNameNSString = nameArray[indexPath.row];
     userDetailsViewController.userImageNSString = imageArray[indexPath.row];
     userDetailsViewController.userSocialAccountNSString = socialAccountArray[indexPath.row];
